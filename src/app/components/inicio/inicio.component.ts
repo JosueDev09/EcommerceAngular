@@ -11,6 +11,8 @@ declare var $: any;
 })
 export class InicioComponent implements OnInit {
 
+ 
+
 constructor(private appC:AppComponent){}
 
  
@@ -23,11 +25,11 @@ constructor(private appC:AppComponent){}
    
     $("#cboTallas").select2({
       dropdownParent: $("#cboTallas").next('.dropDownSelect2')    
-  })
-  $("#cboColor").select2({
-    dropdownParent: $("#cboColor").next('.dropDownSelect2')    
-  })
-  }
+      })
+      $("#cboColor").select2({
+        dropdownParent: $("#cboColor").next('.dropDownSelect2')    
+      })
+      }
  
 
 }
