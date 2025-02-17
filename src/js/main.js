@@ -12,7 +12,7 @@
         linkElement: '.animsition-link',
         loading: true,
         loadingParentElement: 'html',
-        loadingClass: 'animsition-loading-1',
+        //loadingClass: 'animsition-loading-1',
         loadingInner: '<div class="loader05"></div>',
         timeout: false,
         timeoutCountdown: 5000,
