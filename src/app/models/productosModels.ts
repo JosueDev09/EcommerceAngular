@@ -20,7 +20,7 @@ export interface Productos{
     intQuantity?:number; 
     strCategorie?:string; 
     intCategorie?:number; 
-    strNameCategorie?:string;   
+    strCategorieName?:string;   
     // strStatus?:string;  
      Status?:string;
      intColor?: number;

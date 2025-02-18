@@ -1,5 +1,3 @@
-
-<header>
 			
 	<!-- Slider -->
 	<section class="section-slide">
@@ -85,7 +83,7 @@
 	<div class="sec-banner bg0 p-t-80 p-b-50">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto" *ngFor="let categoria of categorias">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
 						<img src="../../../assets/ImagenesTienda/comingSoon.jpg" alt="IMG-BANNER">
@@ -93,7 +91,7 @@
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3" style="text-decoration:none;">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8" >
-									Mujer
+									{{ categoria.strCategorieName }} <!-- Nombre de la categoría -->
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
@@ -108,57 +106,7 @@
 							</div>
 						</a>
 					</div>
-				</div>
-
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="../../../assets/ImagenesTienda/comingSoon.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3" style="text-decoration:none;">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Hombre
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									Muy Pronto
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									¡Comprar Ahora!
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="../../../assets/ImagenesTienda/comingSoon.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3" style="text-decoration:none;">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Accesorios
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									Muy Pronto
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									¡Comprar Ahora!
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
+				</div>	
 			</div>
 		</div>
 	</div>
@@ -177,15 +125,11 @@
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						Todos los Productos
-					</button>
-
-					
-
+					</button>				
  				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
-					
-					
+										
 				</div>
 				
 				<!-- Search product -->
@@ -198,8 +142,6 @@
 						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
 					</div>	
 				</div>
-
-				<!-- Filter -->
 			
 			</div>
 
@@ -218,7 +160,7 @@
 				  
 						<div class="block2-txt flex-w flex-t p-t-14">
 						  <div class="block2-txt-child1 flex-col-l ">
-							<a [routerLink]="" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 cursor-pointer">
+							<a [routerLink]="['/producto-detalle',producto.strCategorieName,producto.strNameProduct]" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 cursor-pointer">
 							  {{ producto.strNameProduct }}  <!-- Nombre del producto -->
 							</a>
 				  
@@ -235,9 +177,7 @@
 						</div>
 					  </div>
 					</div>
-				</div>
-
-			
+				</div>	
 			</div>
 
 			<!-- Load more -->
@@ -248,10 +188,6 @@
 			</div>
 		</div>
 	</section>
-
-
-	
-
 
 	<!-- Modal1 -->
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">

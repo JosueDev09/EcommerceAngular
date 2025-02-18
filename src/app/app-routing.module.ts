@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'carrito', component: CarritoComponent },
   { path: 'sobre-nosotros', component: SobreNosotrosComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'producto-detalle', component: ProductoDetalleComponent },
+  { path: 'producto-detalle/:nombreCategoria/:nombreProducto', component: ProductoDetalleComponent },
 
 
 ];

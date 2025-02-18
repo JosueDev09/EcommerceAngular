@@ -13,4 +13,9 @@ export class ProductosService {
   getProductosDestacados(){
     return this.https.get(this.url + 'Ecommerce/ProductosDestacados');
   }
+
+  getCategorias(){
+    return this.https.get(this.url + 'Ecommerce/Categories');
+  }
+
 }
