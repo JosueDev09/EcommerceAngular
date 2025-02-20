@@ -22,7 +22,10 @@ export class ProductoDetalleComponent implements OnInit{
   idCategoria: string | null = null;
   idProducto: string | null = null;
   productoDetalles: any = {}; 
-  
+  getProductosColores:any []=  [];
+  getProductosTallas:any []=[];
+  selectedColor: string ='0';
+
 
   constructor(private appC:AppComponent,private route: ActivatedRoute, private productosService:ProductosService){}
   
@@ -36,15 +39,18 @@ export class ProductoDetalleComponent implements OnInit{
 
       this.getProductDetails(this.nombreCategoria,this.nombreProducto);   
      this.fnGetProductosDestacados();
-
-      $("#cboTallas").select2({
-        dropdownParent: $("#cboTallas").next('.dropDownSelect2')    
-        })
-        $("#cboColor").select2({
-          dropdownParent: $("#cboColor").next('.dropDownSelect2')    
-        })
+     this.getColoresProductos(this.nombreProducto);
+     
+    
+     $("#cboColor").change((event:any) => {
+      let strNombreColor = $("#cboColor").val();
+          this.nombreProducto = this.nombreProducto || ''
+      this.getTallasProductos(this.nombreProducto, strNombreColor);
+    }); 
+              
+     
         }
-   
+      
 
         fnGetProductosDestacados(){
           this.productosService.getProductosDestacados().subscribe(
@@ -74,8 +80,46 @@ export class ProductoDetalleComponent implements OnInit{
           }
         );
       }
-    
-  
-   
+
+      getColoresProductos(strNombreProducto:string):void
+      {
+        this.productosService.getColoresProducto(strNombreProducto).subscribe(
+          (data:any) => {
+            if(Array.isArray(data)){
+              this.getProductosColores = data[0];
+
+              $("#cboTallas").select2({
+                dropdownParent: $("#cboTallas").next('.dropDownSelect2')    
+                })
+                $("#cboColor").select2({
+                  dropdownParent: $("#cboColor").next('.dropDownSelect2')    
+                })
+             
+            } else{
+              console.error('Respuesta no válida:', data);
+              this.getProductosColores = []; // Maneja el error adecuadamente
+            }
+          }
+        )
+      }
+
+      getTallasProductos(strNombreProducto:string, strNombreColor: string){
+        this.productosService.getTallasProducto(strNombreProducto,strNombreColor).subscribe(
+          (data:any) => {
+            if(Array.isArray(data)){
+              this.getProductosTallas = data[0];
+             
+            } else{
+              console.error('Respuesta no válida:', data);
+              this.getProductosTallas = []; // Maneja el error adecuadamente
+            }
+          }
+        )
+      }
+
+       // Cambiar el color y actualizar las tallas disponibles
+      
+
+     
   
   }

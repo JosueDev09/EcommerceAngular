@@ -28,8 +28,29 @@ export class ProductosService {
     if (strNombreProducto) {
       params = params.set('strNombreProducto', strNombreProducto);
     }
-
     return this.https.get(this.url + 'Ecommerce/Producto-Detalle', { params });
+  }
+
+  getColoresProducto(strNombreProducto: string): Observable<any>{
+    let params= new HttpParams();
+    if(strNombreProducto){
+      params = params.set('strNombreProducto',strNombreProducto)
+    }
+    return this.https.get(this.url + 'Ecommerce/ProductoColores', {params})
+
+  }
+
+  getTallasProducto(strNombreProducto: string,strNombreColor: string): Observable<any>{
+    let params= new HttpParams();
+    if(strNombreProducto){
+      params = params.set('strNombreProducto',strNombreProducto)
+    }
+    if(strNombreColor)
+    {
+      params = params.set('strNombreColor',strNombreColor)
+    }
+    return this.https.get(this.url + 'Ecommerce/ProductoTallas', {params})
+
   }
 
 

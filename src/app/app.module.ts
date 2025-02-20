@@ -10,6 +10,9 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductoDetalleComponent } from './components/producto-detalle/producto-detalle.component';
+import { FormsModule } from '@angular/forms';  // Asegúrate de importar FormsModule
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { ProductoDetalleComponent } from './components/producto-detalle/producto
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
