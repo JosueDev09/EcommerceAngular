@@ -11,6 +11,10 @@ export class ProductosService {
   private url: string = environment.apiUrl;
   constructor(private https:HttpClient) { }
 
+  getProductos(){
+    return this.https.get(this.url + 'Ecommerce/Productos');
+  }
+
   getProductosDestacados(){
     return this.https.get(this.url + 'Ecommerce/ProductosDestacados');
   }

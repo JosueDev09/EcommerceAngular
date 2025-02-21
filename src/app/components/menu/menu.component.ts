@@ -9,7 +9,7 @@ export class MenuComponent {
 
    menuItems = [
       { name: 'Inicio', path: '/' },
-      { name: 'Productos', path: '/productos' },
+      { name: 'Productos', path: '/productos/todoslosproductos' },
       { name: 'Carrito', path: '/carrito' },
       { name: 'Sobre nosotros', path: '/sobre-nosotros' },
       { name: 'Contacto', path: '/contacto' }

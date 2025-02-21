@@ -11,6 +11,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductoDetalleComponent } from './components/producto-detalle/producto-detalle.component';
 import { FormsModule } from '@angular/forms';  // Asegúrate de importar FormsModule
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -29,6 +31,7 @@ import { FormsModule } from '@angular/forms';  // Asegúrate de importar FormsMo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule
   ],
   providers: [],
