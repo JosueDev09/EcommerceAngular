@@ -1,4 +1,6 @@
 import { Component,AfterViewInit } from '@angular/core';
+import { Router,NavigationEnd,Event  } from '@angular/router';
+
 
 declare var $: any; 
 
@@ -11,6 +13,14 @@ declare var $: any;
 
 export class AppComponent implements AfterViewInit {
   title = 'Altessa';
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: Event) => {  // Aquí usamos 'Event' para evitar errores de tipo
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0, 0); // Esto restablece el scroll a la parte superior
+      }
+    });
+  }
   ngAfterViewInit(): void {
     $('.animsition').animsition({
     

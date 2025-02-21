@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
@@ -17,6 +17,10 @@ const routes: Routes = [
 
 
 ];
+const routerOptions: ExtraOptions = {
+ scrollPositionRestoration: 'disabled', // Prueba deshabilitarlo temporalmente
+ anchorScrolling: 'enabled' // Habilita el desplazamiento a los enlaces de anclaje
+};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

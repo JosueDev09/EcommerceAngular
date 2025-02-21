@@ -37,6 +37,8 @@ export class ProductoDetalleComponent implements OnInit{
      this.nombreCategoria= this.route.snapshot.paramMap.get('nombreCategoria') || '';
      this.nombreProducto= this.route.snapshot.paramMap.get('nombreProducto') || '';
 
+     
+
       this.getProductDetails(this.nombreCategoria,this.nombreProducto);   
      this.fnGetProductosDestacados();
      this.getColoresProductos(this.nombreProducto);
