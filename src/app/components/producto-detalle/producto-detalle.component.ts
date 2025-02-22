@@ -5,6 +5,10 @@ import "select2";
 import { ActivatedRoute } from '@angular/router';
 import { Productos } from 'src/app/models/productosModels';
 import { ProductosService } from 'src/app/services/productos.service';
+import { CarritoComponent } from '../carrito/carrito.component';
+import { CarritoService } from 'src/app/services/carrito.service';
+import Swal from 'sweetalert2';
+
 declare var $: any; 
 
 
@@ -25,9 +29,12 @@ export class ProductoDetalleComponent implements OnInit{
   getProductosColores:any []=  [];
   getProductosTallas:any []=[];
   selectedColor: string ='0';
+  quantity: number = 1;  // Valor por defecto para la cantidad
+  size: string = '';     // Talla seleccionada
+  color: string = '';    // Color seleccionado
 
 
-  constructor(private appC:AppComponent,private route: ActivatedRoute, private productosService:ProductosService){}
+  constructor(private appC:AppComponent,private route: ActivatedRoute, private productosService:ProductosService,private carritoService: CarritoService){}
   
   
     ngOnInit(): void {
@@ -119,9 +126,19 @@ export class ProductoDetalleComponent implements OnInit{
         )
       }
 
-       // Cambiar el color y actualizar las tallas disponibles
-      
-
+      fnAgregarCarrito(productoDetalles:any) {
+        this.size = $('#cboTallas').val();
+        this.color = $('#cboColor').val();
+        if (this.size && this.color) {
+          this.carritoService.agregarCarrito(this.productoDetalles, this.quantity, this.size, this.color);
+        Swal.fire({
+          title: '¡Producto agregado al carrito!',
+          icon: 'success',
+          timer: 1500,
+          timerProgressBar: true
+        });
+      }
+    }
      
   
   }
