@@ -29,6 +29,13 @@ export class MenuComponent implements OnInit {
     this.carritoService.getCartItems().subscribe(items => {
       this.cartItems = items;  // Asignamos los productos del carrito a cartItems
     });
+
+    //console.log('carrito:', this.cartItems)
+    }
+
+    // Obtener el precio total de todos los productos
+    getTotal(): number {
+      return this.cartItems.reduce((dblTotal, item) => dblTotal + (item.dblPrice * item.intQuantity), 0);
     }
 
 

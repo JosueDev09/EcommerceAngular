@@ -86,9 +86,9 @@
 
 								<div class="size-204 respon6-next" >
 									<div class="rs1-select2 bor8 bg0">
-										<select name="cboColor" id="cboColor">
+										<select name="cboColor" id="cboColor" >
                                             <option disabled selected [value]="0">Elige un color</option>   
-											<option *ngFor="let colorProduct of getProductosColores" [value]="colorProduct.strColorName">{{colorProduct.strColorName}}</option>                                      
+											<option *ngFor="let colorProduct of getProductosColores" [value]="colorProduct.strColorName" >{{colorProduct.strColorName}}</option>                                      
                                         </select>
                                         <div class="dropDownSelect2"></div>
 									</div>
@@ -103,7 +103,7 @@
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="cboTallas" id="cboTallas">
-											<option>Elige una talla</option>											
+											<option disabled selected [value]="0">Elige una talla</option>											
 											<option *ngFor="let tallaProduct of getProductosTallas" [value]="tallaProduct.strSizeName">{{tallaProduct.strSizeName}}</option> 
 										</select>
 										<div class="dropDownSelect2"></div>
@@ -114,13 +114,11 @@
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
 									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
-										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" (click)="fnDecrementarProducto()">
 											<i class="fs-16 zmdi zmdi-minus"></i>
 										</div>
-
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-
-										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1" [(ngModel)]="intQuantity">
+										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" (click)="fnIncrmentarProducto()">
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div>
@@ -252,7 +250,7 @@
 										<!-- Review -->
 										<div class="flex-w flex-t p-b-68">
 											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="images/avatar-01.jpg" alt="AVATAR">
+												
 											</div>
 
 											<div class="size-207">

@@ -29,9 +29,11 @@ export class ProductoDetalleComponent implements OnInit{
   getProductosColores:any []=  [];
   getProductosTallas:any []=[];
   selectedColor: string ='0';
-  quantity: number = 1;  // Valor por defecto para la cantidad
-  size: string = '';     // Talla seleccionada
-  color: string = '';    // Color seleccionado
+  intQuantity: number = 1;  // Valor por defecto para la cantidad
+  intSize: string = '';     // Talla seleccionada
+  strColor: string = '';    // Color seleccionado
+  submitted: boolean = false;
+  
 
 
   constructor(private appC:AppComponent,private route: ActivatedRoute, private productosService:ProductosService,private carritoService: CarritoService){}
@@ -46,7 +48,7 @@ export class ProductoDetalleComponent implements OnInit{
 
      
 
-      this.getProductDetails(this.nombreCategoria,this.nombreProducto);   
+     this.getProductDetails(this.nombreCategoria,this.nombreProducto);   
      this.fnGetProductosDestacados();
      this.getColoresProductos(this.nombreProducto);
      
@@ -81,7 +83,7 @@ export class ProductoDetalleComponent implements OnInit{
           (data:any) => {
             if (Array.isArray(data)) {
             this.productoDetalles = data[0][0];
-            console.log('Detalles del producto:', this.productoDetalles);
+          //  console.log('Detalles del producto:', this.productoDetalles);
             } else {
               console.error('Respuesta no válida:', data);
               this.productoDetalles = {}; // Maneja el error adecuadamente
@@ -127,10 +129,19 @@ export class ProductoDetalleComponent implements OnInit{
       }
 
       fnAgregarCarrito(productoDetalles:any) {
-        this.size = $('#cboTallas').val();
-        this.color = $('#cboColor').val();
-        if (this.size && this.color) {
-          this.carritoService.agregarCarrito(this.productoDetalles, this.quantity, this.size, this.color);
+        this.intSize = $('#cboTallas').val();
+        this.strColor = $('#cboColor').val();
+      if(this.intSize === null || this.intSize === 'Elegir una Talla' || this.strColor === null || this.intSize === 'Elige una talla'){
+        Swal.fire({
+          title: '¡Favor de elegir talla y color!',
+          icon: 'error',
+          timer: 1500,
+          timerProgressBar: true
+        });
+        return
+      }
+        if (this.intSize && this.strColor) {
+          this.carritoService.agregarCarrito(this.productoDetalles, this.intQuantity, this.intSize, this.strColor);
         Swal.fire({
           title: '¡Producto agregado al carrito!',
           icon: 'success',
@@ -139,6 +150,14 @@ export class ProductoDetalleComponent implements OnInit{
         });
       }
     }
-     
+
+    fnIncrmentarProducto(){
+      this.intQuantity += 1; // Aumentamos en 1
+    }
+    fnDecrementarProducto(){
+      if (this.intQuantity > 1) {
+        this.intQuantity -= 1; // Disminuimos en 1, pero no dejamos que sea menor a 1
+      }
+    }
   
   }

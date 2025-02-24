@@ -123,11 +123,11 @@
                 
                     <div class="header-cart-item-txt p-t-8">
                       <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                        {{ item.strNameProduct }} <!-- Nombre del producto -->
+                        {{ item.strNameProduct }} - {{ item.strColor }} - {{ item.intSize }} <!-- Nombre del producto -->
                       </a>
                 
                       <span class="header-cart-item-info">
-                        {{ item.quantity }} x ${{ item.dblPrice }} <!-- Cantidad x Precio -->
+                        {{ item.intQuantity }} x ${{ item.dblPrice }} <!-- Cantidad x Precio -->
                       </span>
                     </div>
                   </li>
@@ -137,7 +137,7 @@
             
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Total: $0.00
+                    Total: ${{getTotal()}} MXN.
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">
